@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GoogleCloudVisionAPI</string>
+    <string name="choose_an_image">Choose an image</string>
+    <string name="imageview">Imageview</string>
+</resources>
