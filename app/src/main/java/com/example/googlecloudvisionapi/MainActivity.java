@@ -308,32 +308,44 @@ public class MainActivity extends AppCompatActivity {
         message.append("Web Detection: \n");
         WebDetection annotation = response.getResponses().get(0).getWebDetection();
         if (annotation != null) {
-            for (WebEntity entity : annotation.getWebEntities()) {
-                message.append(entity.getDescription()).append(": ").append(entity.getScore()).append("\n");
+            if (annotation.getWebEntities() != null) {
+                for (WebEntity entity : annotation.getWebEntities()) {
+                    message.append(entity.getDescription()).append(": ").append(entity.getScore()).append("\n");
+                }
             }
-            for (WebLabel label : annotation.getBestGuessLabels()) {
-                message.append("Best guess label: ").append(label.getLabel()).append("\n");
+            if (annotation.getBestGuessLabels() != null) {
+                for (WebLabel label : annotation.getBestGuessLabels()) {
+                    message.append("Best guess label: ").append(label.getLabel()).append("\n");
+                }
             }
-            message.append("\n");
-            message.append("Pages with matching images: \n");
-            for (WebPage page : annotation.getPagesWithMatchingImages()) {
-                message.append(page.getUrl()).append("\n");
+            if (annotation.getPagesWithMatchingImages() != null) {
                 message.append("\n");
+                message.append("Pages with matching images: \n");
+                for (WebPage page : annotation.getPagesWithMatchingImages()) {
+                    message.append(page.getUrl()).append("\n");
+                    message.append("\n");
+                }
             }
-            message.append("Pages with partially matching images:\n");
-            for (WebImage image : annotation.getPartialMatchingImages()) {
-                message.append(image.getUrl()).append("\n");
-                message.append("\n");
+            if (annotation.getPartialMatchingImages() != null) {
+                message.append("Pages with partially matching images:\n");
+                for (WebImage image : annotation.getPartialMatchingImages()) {
+                    message.append(image.getUrl()).append("\n");
+                    message.append("\n");
+                }
             }
-            message.append("Pages with fully matching images:\n");
-            for (WebImage image : annotation.getFullMatchingImages()) {
-                message.append(image.getUrl()).append("\n");
-                message.append("\n");
+            if (annotation.getFullMatchingImages() != null) {
+                message.append("Pages with fully matching images:\n");
+                for (WebImage image : annotation.getFullMatchingImages()) {
+                    message.append(image.getUrl()).append("\n");
+                    message.append("\n");
+                }
             }
-            message.append("Pages with visually similar images:\n");
-            for (WebImage image : annotation.getVisuallySimilarImages()) {
-                message.append(image.getUrl()).append("\n");
-                message.append("\n");
+            if (annotation.getVisuallySimilarImages() != null) {
+                message.append("Pages with visually similar images:\n");
+                for (WebImage image : annotation.getVisuallySimilarImages()) {
+                    message.append(image.getUrl()).append("\n");
+                    message.append("\n");
+                }
             }
         } else {
             message.append("No result\n");
